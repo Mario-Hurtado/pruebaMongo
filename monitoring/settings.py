@@ -124,10 +124,10 @@ DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'canemdb',
-      #  'USER': 'canem',
-       # 'PASSWORD': 'canemchiper',
-        #'HOST': 'canemdb.cxzelxrt5fdl.us-east-1.rds.amazonaws.com',
-        #'PORT': '5432',
+        'USER': 'canem',
+        'PASSWORD': 'canemchiper',
+        'HOST': 'canemdb.cxzelxrt5fdl.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 
 }
