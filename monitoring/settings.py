@@ -172,6 +172,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # MongoDB Atlas Config
-MONGO_CLI = os.environ['MONGO_CLIENT']
+#MONGO_CLI = os.environ['MONGO_CLIENT']
 
 CSRF_COOKIE_SECURE = False
