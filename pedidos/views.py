@@ -13,7 +13,7 @@ from rest_framework.parsers import JSONParser
 from django.conf import settings
 from bson.objectid import ObjectId
 
-@login_required
+#@login_required
 @api_view(["GET", "POST"])
 def getPedidos(request):
     role = getRole(request)
