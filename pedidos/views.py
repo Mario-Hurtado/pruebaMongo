@@ -89,5 +89,6 @@ def getPedidos(request):
             "MongoObjectID": str(result)
             #"Message": "Nuevo objeto en la base de datos"
         }
-        client.close()
+        cluster.close()
         return JsonResponse(respuesta, safe = False)
+
