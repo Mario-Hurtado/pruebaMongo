@@ -61,7 +61,7 @@ post2 = {"_id": 1, "nombre": "Cigarrilos Kent", "precio": 8200, "categoria": "Ab
 '''results = collection.find()
 for result in results:
     print(result)'''
-
+@api_view(["GET", "POST"])
 def getPedidos(request):
     cluster = MongoClient("mongodb://monitoringUser:ISIS2503@clustertaller-shard-00-00-xvwem.mongodb.net:27017,clustertaller-shard-00-01-xvwem.mongodb.net:27017,clustertaller-shard-00-02-xvwem.mongodb.net:27017/test?ssl=true&replicaSet=ClusterTaller-shard-0&authSource=admin&retryWrites=true&w=majority")
     db = cluster["canemdb"]
@@ -87,7 +87,7 @@ def getPedidos(request):
         result = collection.insert(datos)
         respuesta = {
             "MongoObjectID": str(result)
-            "Message": "Nuevo objeto en la base de datos"
+            #"Message": "Nuevo objeto en la base de datos"
         }
         client.close()
         return JsonResponse(respuesta, safe = False)
