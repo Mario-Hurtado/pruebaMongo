@@ -121,16 +121,16 @@ WSGI_APPLICATION = 'monitoring.wsgi.application'
        #  'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
      #}
 
-     #'default': {
-      #  'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       # 'NAME': 'canemdb',
-        #'USER': 'canem',
-        #'PASSWORD': 'canemchiper',
-        #'HOST': 'canemdb.cxzelxrt5fdl.us-east-1.rds.amazonaws.com',
-        #'PORT': '5432',
-    #}
+     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'canemdb',
+        'USER': 'canem',
+        'PASSWORD': 'canemchiper',
+        'HOST': 'canemdb.cxzelxrt5fdl.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
+    }
 
-#}
+}
 
 
 # Password validation
@@ -172,4 +172,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # MongoDB Atlas Config
-MONGO_CLI = os.environ['MONGO_CLIENT']
+#MONGO_CLI = os.environ['MONGO_CLIENT']
