@@ -12,10 +12,11 @@ from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.parsers import JSONParser
 from django.conf import settings
 from bson.objectid import ObjectId
+from pymongo import MongoClient
 
 #@login_required
-@api_view(["GET", "POST"])
-def getPedidos(request):
+#@api_view(["GET", "POST"])
+'''def getPedidos(request):
     role = getRole(request)
 
     email = getUserEmail(request)
@@ -47,7 +48,46 @@ def getPedidos(request):
             "Message": "nuevo objeto en la base de datos"
         }
     client.close()
-    return JsonResponse(respo, safe=False)
+    return JsonResponse(respo, safe=False)'''
 
     
-        
+
+
+
+post1 = {"_id": 0, "nombre": "Alpin", "precio": 1500, "categoria": "Lacteos", "descripcion": "Leche achocolatada"}
+post2 = {"_id": 1, "nombre": "Cigarrilos Kent", "precio": 8200, "categoria": "Abarrotes", "descripcion": "Tabaco para fumar"}
+
+#collection.insert_one(post2)
+'''results = collection.find()
+for result in results:
+    print(result)'''
+
+def getPedidos(request):
+    cluster = MongoClient("mongodb://monitoringUser:ISIS2503@clustertaller-shard-00-00-xvwem.mongodb.net:27017,clustertaller-shard-00-01-xvwem.mongodb.net:27017,clustertaller-shard-00-02-xvwem.mongodb.net:27017/test?ssl=true&replicaSet=ClusterTaller-shard-0&authSource=admin&retryWrites=true&w=majority")
+    db = cluster["canemdb"]
+    collection = db["sugerencias"]
+    if request.method == "GET":
+        result = []
+        datos = collection.find({})
+        for dato in datos:
+            jsonData = {
+
+                'id': str(dato['_id']),
+                "nombre": str(dato['nombre']),
+                'precio': dato['precio'],
+                "categoria": str(dato['categoria']),
+                "descripcion": str(dato['descripcion'])
+
+            }
+            result.append(jsonData)
+        cluster.close()
+        return JsonResponse(result, safe = False)
+    if request.method == "POST":
+        datos = JSONParser().parse(request)
+        result = collection.insert(datos)
+        respuesta = {
+            "MongoObjectID": str(result)
+            "Message": "Nuevo objeto en la base de datos"
+        }
+        client.close()
+        return JsonResponse(respuesta, safe = False)
