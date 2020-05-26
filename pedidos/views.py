@@ -19,7 +19,7 @@ def getPedidos(request):
     role = getRole(request)
 
     email = getUserEmail(request)
-    tendero = Tendero.objects.get(correo = email)
+ #   tendero = Tendero.objects.get(correo = email)
 
     if role == "Tendero Principal":
         client = MongoClient(settings.MONGO_CLI)
