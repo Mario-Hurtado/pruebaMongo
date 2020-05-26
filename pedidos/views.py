@@ -23,7 +23,7 @@ def getPedidos(request):
 
     if role == "Tendero Principal":
         client = MongoClient(settings.MONGO_CLI)
-        db = client.monitoring_db
+        db = client.canemdb
         pedidos1 = db['pedidos1']
         if request.method == "GET":
             result = []
