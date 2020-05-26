@@ -31,9 +31,10 @@ def getPedidos(request):
             for dto in data:
                 jsonData = {
                     'id': str(dto['_id']),
-                    "nombre": str(dto['variable']),
-                    'precio': dto['threshold'],
-                    "categoria": str(dto['variable']),
+                    "Nombre": str(dto['Nombre']),
+                    'Precio': dto['Precio'],
+                    "Categoría": str(dto['Categoría']),
+                    "Descripción": str(dto['Descripción'])
             }
                 result.append(jsonData)
             client.close()
