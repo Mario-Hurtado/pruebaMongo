@@ -21,34 +21,33 @@ def getPedidos(request):
     email = getUserEmail(request)
  #   tendero = Tendero.objects.get(correo = email)
 
-    if role == "Tendero Principal":
-        client = MongoClient(settings.MONGO_CLI)
-        db = client.canemdb
-        base = db['canemdb']
-        if request.method == "GET":
-            result = []
-            data = base.find({})
-            for dto in data:
-                jsonData = {
-                    'id': str(dto['_id']),
-                    "nombre": str(dto['nombre']),
-                    'precio': dto['precio'],
-                    "categoria": str(dto['categoria']),
-                    "descripcion": str(dto['descripcion'])
+ #   if role == "Tendero Principal":
+    client = MongoClient(settings.MONGO_CLI)
+    db = client.canemdb
+    base = db['canemdb']
+    if request.method == "GET":
+        result = []
+        data = base.find({})
+        for dto in data:
+            jsonData = {
+                'id': str(dto['_id']),
+                "nombre": str(dto['nombre']),
+                'precio': dto['precio'],
+                "categoria": str(dto['categoria']),
+                "descripcion": str(dto['descripcion'])
             }
-                result.append(jsonData)
-            client.close()
-            return JsonResponse(result, safe=False)
-    
-        if request.method == 'POST':
-            data = JSONParser().parse(request)
-            result = pedidos1.insert(data)
-            respo ={
-                "MongoObjectID": str(result),
-                "Message": "nuevo objeto en la base de datos"
-            }
-            client.close()
-            return JsonResponse(respo, safe=False)
+            result.append(jsonData)
+        client.close()
+        return JsonResponse(result, safe=False)
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        result = base.insert(data)
+        respo ={
+            "MongoObjectID": str(result),
+            "Message": "nuevo objeto en la base de datos"
+        }
+    client.close()
+    return JsonResponse(respo, safe=False)
 
     
         
