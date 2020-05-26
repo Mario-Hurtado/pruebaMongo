@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card-columns">
+
+    {% if pedidos %}
+        {% for pe in pedidos %}
+
+        <div class="card" style="width: 20rem;">
+            <div class="card-body">
+                <h4 class="card-title" style= "color: #ff0138;">Pedido</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Fecha: {{ pe.fecha }}</h6>
+                <p class="card-text">Precio total: {{ pe.precioTotal }}</p>
+                <br>
+                <h5 style= "color: #ff0138;">Productos en el pedido:</h5>
+                <br>
+                {% for pp in productosP %}
+                    {% if pp.pedido == pe %}
+
+                <h6>Producto: {{ pp.producto.nombre }}</h5>
+                <p>Cantidad del producto: {{ pp.cantidad }}</h4>
+                <p>Precio subtotal: {{ pp.subtotal }}</h4>
+                <p>--------</p>
+                
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        {% endfor %}
+    {% endif %}
+
+</div>
+
+<a href="{% url 'autenticado' %}" class="btn btn-danger" style="background-color: #ff0138;">Volver</a>
+
+{% endblock %}

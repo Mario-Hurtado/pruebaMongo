@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card-columns">
+
+    {% if productos %}
+            {% for p in productos %}
+
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+
+                    <h4 class="card-title" style= "color: #ff0138;">Producto</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Nombre: {{ p.nombre }}</h6>
+                    <p class="card-text">Precio: {{ p.precio }}</p>
+                    <p class="card-text">Categoría: {{ p.categoria }}</p>
+                    <p class="card-text">Descripción: {{ p.descripcion }}</p>
+
+                </div>
+            </div>
+
+            {% endfor %}
+    {% endif %}
+
+</div>
+
+<a href="{% url 'autenticado' %}" class="btn btn-danger" style="background-color: #ff0138;">Volver</a>
+
+{% endblock %}

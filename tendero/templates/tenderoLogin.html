@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<img src="https://image.flaticon.com/icons/svg/2898/2898383.svg">
+
+
+<h2>Bienvenido a tu tienda: {{data.tienda.nombre}}</h2>
+<a href="{% url 'listaPedidos' %}" class="btn btn-danger" style="background-color: #ff0138;">Consultar el historial de pedidos</a>
+<a href="{% url 'recomendados' %}" class="btn btn-danger" style="background-color: #ff0138;">Consultar productos sugeridos</a>
+
+
+{% endblock %}

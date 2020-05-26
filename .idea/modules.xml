@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/ISIS2503-202010-S1-Canem.iml" filepath="$PROJECT_DIR$/.idea/ISIS2503-202010-S1-Canem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../tallerAuth0/.idea/tallerAuth0.iml" filepath="$PROJECT_DIR$/../tallerAuth0/.idea/tallerAuth0.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+        <title>Chiper</title>
+
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white; border-color: black;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <a class="navbar-brand" href="https://chiper.co/" style="font-size:200%;" target="_blank"><img src="https://chiper.co/static/media/logoPlayMercadito.b5ccb459.png" width="50" height="50" alt=""> Chiper services </a>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="https://chiper.co/" target="_blank">Home <span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                {% if user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="font-size:120%" class="nav-link active">Bienvenido: {{ user.first_name }} </a></li>
+                    <li><a style="font-size:120%; padding-right:20px; background-color: #ff0138;" class="btn btn-danger" href="/logout" role="Button">Log out</a></li>
+                </ul>
+                {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="font-size:120%; padding-right:20px; background-color: #ff0138;" class="btn btn-danger" href="/login/auth0"role="Button">Login</a></li>
+                </ul>
+                {% endif %}
+              </form>
+            </div>
+          </nav>
+
+        {% block head %}
+
+        {% endblock %}
+
+    </head>
+
+    <style media="screen">
+      .carousel-cell {
+        width: 66%;
+        }
+
+        
+        .carousel-cell:before {
+          display: block;
+        }
+      </style>
+
+
+    <body>
+
+      {% if user.is_authenticated %}
+
+        <div class="container text-center">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+
+
+      {% else %}
+    <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
+      <div class="carousel-cell">
+        <img class="w3-image" src="https://www.elheraldo.co/sites/default/files/articulo/2018/09/07/1b_tienda_0.jpg">
+      </div>
+      <div class="carousel-cell">
+        <img class="w3-image" src="https://www.teleantioquia.co/wp-content/uploads/2020/02/La-tecnolog%C3%ADa-lleg%C3%B3-a-las-tiendas-de-barrio.png">
+      </div>
+      <div class="carousel-cell">
+        <img class="w3-image" src="https://static.iris.net.co/dinero/upload/images/2016/11/1/238543_1.jpg">
+      </div>
+    </div>
+    <br>
+    <h2 class="w3-center">Somos una plataforma digital que facilita el abastecimiento de tu tienda y tus clientes.</h2>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  {% endif %}
+
+    </body>
+
+
+</html>
