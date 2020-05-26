@@ -24,17 +24,17 @@ def getPedidos(request):
     if role == "Tendero Principal":
         client = MongoClient(settings.MONGO_CLI)
         db = client.canemdb
-        pedidos1 = db['pedidos1']
+        base = db['canemdb']
         if request.method == "GET":
             result = []
-            data = pedidos1.find({})
+            data = base.find({})
             for dto in data:
                 jsonData = {
                     'id': str(dto['_id']),
-                    "Nombre": str(dto['Nombre']),
-                    'Precio': dto['Precio'],
-                    "Categoría": str(dto['Categoría']),
-                    "Descripción": str(dto['Descripción'])
+                    "nombre": str(dto['nombre']),
+                    'precio': dto['precio'],
+                    "categoria": str(dto['categoria']),
+                    "descripcion": str(dto['descripcion'])
             }
                 result.append(jsonData)
             client.close()
