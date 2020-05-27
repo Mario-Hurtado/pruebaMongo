@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 
 LOGIN_URL = "/login/auth0"
 LOGIN_REDIRECT_URL = "/autenticado/"
-LOGOUT_REDIRECT_URL = "https://isis2503-mario-hurtado.auth0.com/v2/logout?returnTo=http%3A%2F%2F54.198.254.78:80"
+LOGOUT_REDIRECT_URL = "https://isis2503-mario-hurtado.auth0.com/v2/logout?returnTo=http%3A%2F%2F54.237.26.39:8080"
 
 SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
 SOCIAL_AUTH_AUTH0_DOMAIN = 'isis2503-mario-hurtado.auth0.com'
