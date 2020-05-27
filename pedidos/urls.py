@@ -4,6 +4,6 @@ from django.conf.urls import url
 
 urlpatterns = [
 
-    url(r'^listaPedidos/', views.getPedidos, name='pedidoList')
+    url(r'^listaPedidos/$', views.getPedidos, name='pedidoList')
 
 ]
